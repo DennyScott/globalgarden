@@ -1,0 +1,10 @@
+.float-right{
+	float:right;
+}
+
+#footer{
+  padding-top:19px;
+  border-top:1px solid #e5e5e5;
+  text-align: center;
+  font-size: 14px;
+}

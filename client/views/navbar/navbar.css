@@ -1,0 +1,24 @@
+.navbar {
+	margin-bottom:0px!important;
+	-webkit-transition: color 500ms ease;
+	-moz-transition: color 500ms ease;
+	-ms-transition: color 500ms ease;
+	-o-transition: color 500ms ease;
+	transition: color 500ms ease;
+	-webkit-transition: background-color 500ms ease;
+	-moz-transition: background-color 500ms ease;
+	-ms-transition: background-color 500ms ease;
+	-o-transition: background-color 500ms ease;
+	transition: background-color 500ms ease;
+}
+
+.dropdown-menu{
+	background-color:#fafafa!important;
+	z-index:20;
+}
+
+.faded{
+	background-color:rgba(236,240,241,.4)!important;
+	height:110%;
+}
+

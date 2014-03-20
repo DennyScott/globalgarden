@@ -1,0 +1,13 @@
+<template name="default">
+	<div id="wrap">
+		<div id="navbar-wrapper">
+			{{yield 'navbar'}}
+		</div>
+
+		<div id="main-content">
+			{{yield}}
+		</div>
+	</div>
+
+	{{yield 'footer'}}
+</template>
