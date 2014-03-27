@@ -1,9 +1,22 @@
 <template name="garden">
 	<div id="garden-content">
+		<div class="navbar navbar-default control-panel">
+			<div class="container">
+				<div class="pull-right projectManagement">
+					<a class="add-garden"><i class="fa fa-plus-circle"></i></a>
+					<i class="fa fa-cogs"></i>
+				</div>
+			</div>
+		</div>
 		<div class="container">
-			<h1>Hello World!</h1>
-			{{greeting}}
-			<input type="button" value="Click" />
+			<div class="projects">
+				<div class="project ">
+					<div class="projectInfo blur">
+						<h3 class="projectHeader">Kitchen</h3>
+						<h4 class="rating"><span class="good">Good</span></h4>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

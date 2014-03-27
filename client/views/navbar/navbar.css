@@ -1,5 +1,11 @@
+@font-face {
+	font-family: Maven Pro Regular;
+	src: url('fonts/Maven Pro Regular.otf');
+}
+
 .navbar {
 	margin-bottom:0px!important;
+	font-family: Maven Pro Regular;
 	-webkit-transition: color 500ms ease;
 	-moz-transition: color 500ms ease;
 	-ms-transition: color 500ms ease;

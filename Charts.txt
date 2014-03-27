@@ -1,0 +1,6 @@
+-Average Temperature (By 1 Day, 30 Day, 90 Day, 6 Months, Year)
+-Average Humidity (By 1 Day, 30 Day, 90 Day, 6 Months, Year)
+-Average Moisture (By 1 Day, 30 Day, 90 Day, 6 Months, Year)
+-Average Light (By 1 Day, 30 Day, 90 Day, 6 Months, Year)
+
+-Average Water Usage (By 1 Day, 30 Day, 90 Day, 6 Months, Year)

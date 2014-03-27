@@ -6,7 +6,8 @@
       "accounts-entry": {},
       "bootstrap-3": {},
       "fast-render": {},
-      "profile": {}
+      "profile": {},
+      "font-awesome": {}
     },
     "packages": {
       "iron-router": {
@@ -33,6 +34,11 @@
         "git": "https://github.com/BeDifferential/meteor-profile.git",
         "tag": "v0.0.8",
         "commit": "a79eed39b871d4c384b76d77b78e318eb2f300fd"
+      },
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v4.0.3",
+        "commit": "61e9361384347547ae144f8228faa4deffda23db"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

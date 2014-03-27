@@ -1,1 +1,69 @@
 /* CSS declarations go here */
+@font-face {
+	font-family: idealist sans;
+	src: url('fonts/Idealist Sans.ttf');
+}
+
+@font-face {
+	font-family: Stroke;
+	src: url('fonts/Stroke-Regular.otf');
+}
+
+@font-face {
+	font-family: idealist sans light;
+	src: url('fonts/Idealist Sans Light.ttf');
+}
+
+.control-panel{
+	position: fixed;
+	width:100%;
+}
+
+.projectManagement{
+	font-size:1.5em;
+	color:#aaaaaa;
+	line-height: 2.3;
+}
+
+.projectManagement * {
+	margin-left: 10px;
+}
+
+.rating > .good{
+	color:rgb(50, 200, 50);
+}
+
+.project{
+	width:150px;
+	height:150px;
+	background:url("img/rain.jpg");
+	margin-top:10px;
+	margin-bottom:40px;
+	border-radius: 40px;
+	font-family:Stroke;
+
+}
+
+a > i{
+	color:#aaaaaa;
+}
+
+.projects{
+	margin-top:60px;
+}
+
+.projectInfo {
+	text-align:center;
+	margin-top:50px;
+}
+
+.projectHeader{
+	line-height: 4;
+}
+
+.blur{
+	width:100%;
+	height:100%;
+	border-radius:40px;
+	background-color: rgba(200,200,200,0.4);
+}
