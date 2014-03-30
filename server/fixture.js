@@ -181,12 +181,12 @@ function updateRun(){
 			var light;
 
 			//INITIALIZATION
-			if(garden.temp.dateHistory.length > 0){
+			if(garden.date.length > 0){
 				//IF GARDEN ALREADY HAS AN ORIGINAL VALUE
-				temp = garden.temp.current;
-				moisture = garden.moisture.current;
-				humidity = garden.humidity.current;
-				light = garden.light.current;
+				temp = garden.temp[garden.temp.length-1];
+				moisture = garden.moisture[garden.moisture.length-1];
+				humidity = garden.humidity[garden.humidity.length-1];
+				light = garden.light[garden.light.length-1];
 			} else {
 				//IF GARDEN HAS NEVER HAD AN INITIAL VALUE
 				temp = parseFloat(Math.floor((Math.random()*(tempMax-tempMin))+tempMin).toFixed(2));
@@ -349,6 +349,7 @@ function updateRun(){
 			Meteor.call('insertMoisture', garden._id, moisture, function (error, result) {});
 			Meteor.call('insertHumidity', garden._id, humidity, function (error, result) {});
 			Meteor.call('insertLight', garden._id, light, function (error, result) {});
+			Meteor.call('insertDate', garden._id, function (error, result) {});
 		});
 
 	console.log("Next Iteration in: " + iterationTime);
