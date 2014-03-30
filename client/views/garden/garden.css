@@ -5,6 +5,11 @@
 }
 
 @font-face {
+	font-family: Maven Pro Regular;
+	src: url('fonts/Maven Pro Regular.otf');
+}
+
+@font-face {
 	font-family: Stroke;
 	src: url('fonts/Stroke-Regular.otf');
 }
@@ -16,13 +21,71 @@
 
 .control-panel{
 	position: fixed;
+	background:white;
 	width:100%;
+	z-index:100;
+}
+
+body{
+	background-color: #f8f8f8;
+	font-family: Maven Pro Regular;
 }
 
 .projectManagement{
 	font-size:1.5em;
 	color:#aaaaaa;
 	line-height: 2.3;
+	
+}
+
+.currentProject {
+	font-size:20px;
+	margin-top:4px;
+	line-height: 2.2;
+}
+
+.left{
+	margin-right:2%;
+}
+
+.stat{
+	margin-top:10px;
+	background-color: white;
+	padding-top:5px;
+	padding-bottom:5px;
+	width:49%;
+	float:left;
+	text-align:center;
+	font-family: Maven Pro Regular;
+}
+
+.stat:hover{
+	background:#eee;
+	cursor:pointer;
+}
+.stat-icon{
+	font-size:30px;
+
+}
+
+.number{
+
+}
+
+.title{
+	background:rgba(0,0,0,.8);
+	padding-top:5px;
+	padding-bottom:10px;
+	width:100%;
+	font-size:18px;
+	color:white;
+	font-family: idealist sans;
+	text-align: center;
+}
+
+.chart{
+	margin-top:20px;
+	margin-bottom:20px;
 }
 
 .projectManagement * {
@@ -37,33 +100,126 @@
 	width:150px;
 	height:150px;
 	background:url("img/rain.jpg");
-	margin-top:10px;
-	margin-bottom:40px;
 	border-radius: 40px;
 	font-family:Stroke;
 
+}
+
+.projects > .active {
+	background-color:#eee;
+	cursor:default!important;
+}
+
+.information, .analytics, .projects {
+	margin-top:75px;
+	background-color: transparent;
+	z-index:1;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.information{
+	margin-right:30px;
+	margin-left:10px;
+}
+
+.content{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+.analytics{
+	margin-left:15px;
+	margin-right:15px;
+}
+
+.projects{
+	margin-left:30px;
+}
+
+.display-graph{
+	margin-top:10px;
+	background: white;
+
+}
+
+.Manage-Analytics{
+	background:white;
+	float:left;
+	text-align: center;
+	width:100%;
+	padding-top: 10px;
+	padding-bottom:10px;
+	margin-top:7px;
+}
+
+.Manage-Analytics:hover {
+	background:#eee;
+	cursor:pointer;
+}
+
+.action{
+	background:white;
+	margin-top:7px;
+	width:100%;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+	float:left;
+}
+
+.action:hover{
+	background:#eee;
+	cursor: pointer;
 }
 
 a > i{
 	color:#aaaaaa;
 }
 
-.projects{
-	margin-top:60px;
+.projects > .title {
+	margin-bottom:10px;
 }
-
-.projectInfo {
+.garden{
+	padding-top:10px;
+	padding-bottom:10px;
 	text-align:center;
-	margin-top:50px;
-}
-
-.projectHeader{
-	line-height: 4;
-}
-
-.blur{
+	background:white;
 	width:100%;
-	height:100%;
-	border-radius:40px;
-	background-color: rgba(200,200,200,0.4);
+	margin-bottom:8px;
+}
+
+.garden:hover{
+	background:#eee;
+	cursor: pointer;
+}
+.garden{
+	padding-left:15px;
+	text-align: left;
+}
+
+.garden > span {
+	float:right;
+	margin-top:4px;
+	font-size: 10px;
+	margin-right:15px;
+}
+
+.action > span {
+	float:right;
+	margin-top:4px;
+	font-size: 10px;
+	margin-right:15px;
+}
+
+.good{
+	color:#87b87f;
+}
+
+.warning {
+	color:#ffb752;
+}
+
+.danger{
+	color:#d15b47;
 }

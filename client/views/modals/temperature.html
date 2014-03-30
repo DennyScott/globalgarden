@@ -1,0 +1,28 @@
+<template name="temperature">
+	<div class="modal fade" id="temperature" tabindex="-1" role="dialog" aria-labelledby="temperaturelabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 class="modal-title" id="temperaturelabel">Temperature Settings</h3>
+				</div>
+				<div class="modal-body">
+					<div class="modal-section">
+						<h4>Automatic</h4>
+						Keep the garden at the constant temperature of <input type="text" name="temp" class="form-control inline-form" id="temp">&deg;C.
+					</div>
+					<hr>
+					<div class="modal-section">
+						<h4>Rules</h4>
+						If temperature is -- <input type="text" name="multiple[]" class="form-control inline-form">&deg;C, turn heater --
+					    <span class="input-group-btn"><button type="button" class="btn btn-default btn-add">+</button></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

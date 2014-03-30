@@ -8,15 +8,117 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="projects">
-				<div class="project ">
-					<div class="projectInfo blur">
-						<h3 class="projectHeader">Kitchen</h3>
-						<h4 class="rating"><span class="good">Good</span></h4>
+		<div id="user-content">
+			
+			<div class="information col-md-3 col-xs-12">
+				<div class = "title">
+					Tools
+				</div>
+					<div class = "stat left" data-toggle="modal" data-target="#temperature">
+						Temperature
+						<div class="stat-icon"><i class="fa fa-umbrella"></i></div>
+						<div class="number">10</div>
 					</div>
+
+
+					<div class = "stat right" data-toggle="modal" data-target="#humidity">
+						Humidity
+						<div class="stat-icon"><i class="fa fa-cloud"></i></div>
+						<div class="number">10</div>
+					</div>
+
+					<div class = "stat left" data-toggle="modal" data-target="#moisture">
+						Moisture
+						<div class="stat-icon"><i class="fa fa-tint"></i></div>
+						<div class="number">10</div>
+					</div>
+
+
+					<div class = "stat right" data-toggle="modal" data-target="#light">
+						Light
+						<div class="stat-icon"><i class="fa fa-sun-o"></i></div>
+						<div class="number">10</div>
+					</div>
+
+					<div class="action">
+						Water Garden
+						<span class="danger"><i class="fa fa-circle"></i></span>
+					</div>
+
+					<div class="action">
+						Toggle Heater
+						<span class="danger"><i class="fa fa-circle"></i></span>
+					</div>
+
+					<div class="action">
+						Humidify
+						<span class="danger"><i class="fa fa-circle"></i></span>
+					</div>
+
+					<div class="action">
+						Toggle Lights
+						<span class="danger"><i class="fa fa-circle"></i></span>
+					</div>
+
+					<div class="action">
+						Delete Garden
+						<span class="danger"><i class="fa fa-exclamation-triangle"></i></span>
+					</div>
+			</div>
+
+			<div class="analytics col-md-6 col-xs-12">
+				<div class = "title">
+					Analytics
+				</div>
+					<div class="col-md-12 display-graph">
+						<div class="chart center" id="chart">
+						</div>
+					</div>
+					<div class="Manage-Analytics" data-toggle="modal" data-target="#analytics">
+						Manage Analytics
+					</div>
+			</div>
+			<div class="projects col-md-2 col-xs-12">
+				<div class = "title">
+					Gardens
+				</div>
+				<div class="garden active">
+					Kitchen <span class="good"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Winnipeg Beach <span class="warning"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Cottage <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Rec-Room <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Outside - Tomatoes <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Outside - Strawberries <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Outside - Tulips <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Outside - Roses <span class="danger"><i class="fa fa-circle"></i></span>
+				</div>
+
+				<div class="garden">
+					Living Room <span class="danger"><i class="fa fa-circle"></i></span>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </template>
