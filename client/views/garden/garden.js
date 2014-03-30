@@ -13,7 +13,7 @@ Template.garden.helpers({
     getTemp: function() {
         if(this.temp){
             if(this.temp[this.temp.length-1]){
-                return this.temp[this.temp.length-1].toFixed(2);
+                return this.temp[this.temp.length-1];
             }
         }
     },
@@ -21,7 +21,7 @@ Template.garden.helpers({
     getHumidity: function() {
         if(this.humidity){
             if(this.humidity[this.humidity.length-1]){
-                return this.humidity[this.humidity.length-1].toFixed(2);
+                return this.humidity[this.humidity.length-1];
             }
         }
     },
@@ -29,7 +29,7 @@ Template.garden.helpers({
     getMoisture: function() {
         if(this.moisture){
             if(this.moisture[this.moisture.length-1]){
-                return this.moisture[this.moisture.length-1].toFixed(2);
+                return this.moisture[this.moisture.length-1];
             }
         }
     },
@@ -37,7 +37,7 @@ Template.garden.helpers({
     getLight: function() {
         if(this.light){
             if(this.light[this.light.length-1]){
-                return this.light[this.light.length-1].toFixed(2);
+                return this.light[this.light.length-1];
             }
         }
     },
