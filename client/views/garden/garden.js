@@ -2,6 +2,39 @@ var globalTemperature = ['Global', 30, 20, 50, 40, 60, 50];
 var temperature,humidity,moisture,light, globalHumidity, globalMoisture, globalLight;
 var chart;
 
+Template.garden.helpers({
+    getTemp: function() {
+        if(this.temp){
+            if(this.temp[this.temp.length-1]){
+                return this.temp[this.temp.length-1].toFixed(2);
+            }
+        }
+    },
+
+    getHumidity: function() {
+        if(this.humidity){
+            if(this.humidity[this.humidity.length-1]){
+                return this.humidity[this.humidity.length-1].toFixed(2);
+            }
+        }
+    },
+
+    getMoisture: function() {
+        if(this.moisture){
+            if(this.moisture[this.moisture.length-1]){
+                return this.moisture[this.moisture.length-1].toFixed(2);
+            }
+        }
+    },
+
+    getLight: function() {
+        if(this.light){
+            if(this.light[this.light.length-1]){
+                return this.light[this.light.length-1].toFixed(2);
+            }
+        }
+    }
+});
 Template.garden.rendered = function () {
 	blurlib();
 	loadd3();
