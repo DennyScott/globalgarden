@@ -19,16 +19,15 @@ Template.garden.rendered = function () {
    });
   });
 
-    temperature = loadData("Your Garden - Temp", "temperature", function(){return Gardens.findOne().temp;});
-    humidity = loadData("Your Garden - Humidity", "humididty", function(){return Gardens.findOne().humidity;});
-    moisture = loadData("Your Garden - Moisture", "moisture", function(){return Gardens.findOne().moisture;});
-    light = loadData("Your Garden - Light", "light", function(){return Gardens.findOne().light;});
+    temperature = loadData("Your Garden - Temp", "temperature");
+    humidity = loadData("Your Garden - Humidity", "humididty");
+
+    moisture = loadData("Your Garden - Moisture", "moisture");
+    light = loadData("Your Garden - Light", "light");
 
     chart = c3.generate({
         data: {
-            x: 'x',
             columns: [
-            ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
             globalTemperature,
             temperature,
             humidity,
@@ -41,9 +40,9 @@ Template.garden.rendered = function () {
          enabled : true
      },
      axis : {
-        x : {
-            type : 'timeseries'
-        }
+        // x : {
+        //     type : 'timeseries'
+        // }
     },
     tooltip: {
     	show: false
@@ -63,15 +62,18 @@ Template.garden.rendered = function () {
  });
 };
 
-function loadData(name, attribute, query){
+function loadData(name, attribute){
     var data;
     if(!Session.get(attribute)){
      data = [];
  }else{
-    data = query();
+    console.log(attribute);
+    data = get_history_days('vFab3DHPEPqhn4LYc',30, attribute);
+    console.log(data);
 }
 
-data.unshift(name);
+    var nameObject = {date: new Date(), val: name};
+    data.unshift(nameObject);
 return data;
 }
 
@@ -79,7 +81,6 @@ function redraw(){
 	
 	chart.load({
         columns: [
-        ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
         globalTemperature,
         temperature,
         humidity,

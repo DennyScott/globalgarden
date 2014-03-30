@@ -1,4 +1,4 @@
-function get_history_days(gardenId, numberOfDays, type){
+ get_history_days = function(gardenId, numberOfDays, type){
 		var found = Gardens.findOne(gardenId);
 		type = type.toLowerCase();
 		var history;
@@ -14,9 +14,9 @@ function get_history_days(gardenId, numberOfDays, type){
 			}
 		}
 		return history;
-}
+};
 
-function getHistoryFromArray(days, findArray){
+getHistoryFromArray = function(days, findArray){
 	var start = new Date(new Date().setDate(new Date().getDate()-days));
 	returnArray = [];
 	for(var i =0; i < findArray.length; i++){
@@ -25,4 +25,4 @@ function getHistoryFromArray(days, findArray){
 		}
 	}
 	return returnArray;
-}
+};
