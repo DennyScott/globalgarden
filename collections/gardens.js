@@ -31,22 +31,11 @@ Meteor.methods({
 			user_id: user._id,
 			// user_name: userName,
 			created: new Date().getTime(),
-			temp: {
-				current: 0,
-				dateHistory: []
-			},
-			humidity: {
-				current: 0,
-				dateHistory: []
-			},
-			moisture: {
-				current: 0,
-				dateHistory: []
-			},
-			light: {
-				current: 0,
-				dateHistory: []
-			},
+			temp: [],
+			humidity: [],
+			moisture: [],
+			light: [],
+			date: [],
 			autoHeat: false,
 			autoHeatMin: 20,
 			autoHeatMax: 30,
@@ -72,7 +61,7 @@ Meteor.methods({
 	insertTemperature: function(gardenId, temp){
 		found = Gardens.findOne(gardenId);
 		if(found){
-			found.temp = insertIntoHistory(temp, found.temp);
+			found.temp[found.temp.length] = parseFloat(temp.toFixed(2));
 			Gardens.update(gardenId, found);
 		}
 	},
@@ -81,7 +70,7 @@ Meteor.methods({
 		found = Gardens.findOne(gardenId);
 
 		if(found){
-			found.humidity = insertIntoHistory(humidity, found.humidity);
+			found.humidity[found.humidity.length] = parseFloat(humidity.toFixed(2));
 			Gardens.update(gardenId, found);
 		}
 	},
@@ -90,7 +79,7 @@ Meteor.methods({
 		found = Gardens.findOne(gardenId);
 
 		if(found){
-			found.moisture = insertIntoHistory(moisture, found.moisture);
+			found.moisture[found.moisture.length] = parseFloat(moisture.toFixed(2));
 			Gardens.update(gardenId, found);
 		}
 	},
@@ -99,19 +88,18 @@ Meteor.methods({
 		var found = Gardens.findOne(gardenId);
 
 		if(found){
-			found.light = insertIntoHistory(light, found.light);
+			found.light[found.light.length] = parseFloat(light.toFixed(2));
 			Gardens.update(gardenId, found);
 		}
 	},
 
-});
+	insertDate: function(gardenId){
+		var found = Gardens.findOne(gardenId);
 
-function insertIntoHistory(val, insertArray){
-	insertArray.current = val;
-	newHistory = {
-		'date': new Date(),
-		'val': val
-	};
-	insertArray.dateHistory[insertArray.dateHistory.length] = newHistory;
-	return insertArray;
-}
+		if(found){
+			found.date[found.date.length] = new Date();
+			Gardens.update(gardenId, found);
+		}
+	}
+
+});
