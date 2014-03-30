@@ -1,12 +1,12 @@
 
-if(Gardens.find().count()===0){
-	Gardens.insert({
-		temp : [4,8,15,16,23,42],
-		humidity : [4,8,15,16,23,42],
-		moisture : [4,8,15,16,23,42],
-		light : [4,8,15,16,23,42]
-	});
-}
+// if(Gardens.find().count()===0){
+// 	Gardens.insert({
+// 		temp : [4,8,15,16,23,42],
+// 		humidity : [4,8,15,16,23,42],
+// 		moisture : [4,8,15,16,23,42],
+// 		light : [4,8,15,16,23,42]
+// 	});
+// }
 
 //TIME VARIABLES
 var runId;
@@ -607,5 +607,4 @@ function changeTimeScale(newTimeScale){
 
 	Meteor.clearInterval(runId);
 	runId = Meteor.setInterval(updateRun, iterationTime);
->>>>>>> ba0467eeb15f362b646cdc998e1ecabd0bea8bc6
 }
