@@ -1,36 +1,46 @@
-var global = ['Global', 30, 20, 50, 40, 60, 50];
+var globalTemperature = ['Global', 30, 20, 50, 40, 60, 50];
+var temperature,humidity,moisture,light, globalHumidity, globalMoisture, globalLight;
 var chart;
 
 Template.garden.rendered = function () {
 	blurlib();
 	loadd3();
 	loadc3();
+    Session.set("temperature", true);
+    Session.set("humidity", false);
+    Session.set("moisture", false);
+    Session.set("light", false);
+    $('blur').each(function(){
+      console.log("in blur");
+      $(this).blurjs({
+       source: 'body',
+       radius: 20,
+       overlay: 'rgba(255,255,255,0.4)'
+   });
+  });
 
-	$('blur').each(function(){
-		console.log("in blur");
-		$(this).blurjs({
-			source: 'body',
-			radius: 20,
-			overlay: 'rgba(255,255,255,0.4)'
-		});
-	});
+    temperature = loadData("Your Garden - Temp", "temperature", function(){return Gardens.findOne().temp;});
+    humidity = loadData("Your Garden - Humidity", "humididty", function(){return Gardens.findOne().humidity;});
+    moisture = loadData("Your Garden - Moisture", "moisture", function(){return Gardens.findOne().moisture;});
+    light = loadData("Your Garden - Light", "light", function(){return Gardens.findOne().light;});
 
-	var user = loadData("Your Garden", false);
-
-	chart = c3.generate({
-    data: {
-        x: 'x',
-        columns: [
+    chart = c3.generate({
+        data: {
+            x: 'x',
+            columns: [
             ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-            global,
-            user
+            globalTemperature,
+            temperature,
+            humidity,
+            moisture,
+            light
 
-        ]
-    },
-    zoom: {
-    	enabled : true
-    },
-    axis : {
+            ]
+        },
+        zoom: {
+         enabled : true
+     },
+     axis : {
         x : {
             type : 'timeseries'
         }
@@ -40,34 +50,41 @@ Template.garden.rendered = function () {
     }
 });
 
-	
 
-	Deps.autorun(function() {
-		var user = loadData("Your Garden",true);
-		redraw(user);
-		
-	});
+
+    Deps.autorun(function() {
+
+     temperature = loadData("Your Garden - Temp", "temperature", function(){return Gardens.findOne().temp;});
+     humididty = loadData("Your Garden - Humidity", "humididty", function(){return Gardens.findOne().humidity;});
+     moisture = loadData("Your Garden - Moisture", "moisture", function(){return Gardens.findOne().moisture;});
+     light = loadData("Your Garden - Light", "light", function(){return Gardens.findOne().light;});
+     redraw();
+
+ });
 };
 
-function loadData(name, check){
+function loadData(name, attribute, query){
     var data;
-	if(!check){
+    if(!Session.get(attribute)){
      data = [];
-    }else{
-        data = Gardens.findOne().temp;
-    }
-
-	data.unshift(name);
-	return data;
+ }else{
+    data = query();
 }
 
-function redraw(user){
+data.unshift(name);
+return data;
+}
+
+function redraw(){
 	
 	chart.load({
         columns: [
-         ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-            global,
-            user
+        ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+        globalTemperature,
+        temperature,
+        humidity,
+        moisture,
+        light
         ]
     });
 }
