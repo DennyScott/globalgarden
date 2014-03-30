@@ -7,15 +7,26 @@
 					<h3 class="modal-title" id="temperaturelabel">Temperature Settings</h3>
 				</div>
 				<div class="modal-body">
-					<div class="modal-section">
-						<h4>Automatic</h4>
-						Keep the garden at the constant temperature of <input type="text" name="temp" class="form-control inline-form" id="temp">&deg;C.
+					<div class="modal-section" id="automatic">
+						<button class="btn section-header" data-toggle="collapse" id="autoButton" data-parent="#automatic" href="#collapseOne"><h4>Automatic</h4></button>
+						<div id="collapseOne" class="panel-collapse collapse {{isAuto}}">
+							<div class="collapse-content">
+								Keep the garden at this constant temperature (&deg; C) 
+							</div>
+							<input type="text" name="temp" class="form-control" id="temp">
+						</div>
 					</div>
 					<hr>
-					<div class="modal-section">
-						<h4>Rules</h4>
-						If temperature is -- <input type="text" name="multiple[]" class="form-control inline-form">&deg;C, turn heater --
-					    <span class="input-group-btn"><button type="button" class="btn btn-default btn-add">+</button></span>
+					<div class="modal-section" id="rules">
+						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#collapseTwo"><h4>Rules</h4></button>
+						<div id="collapseTwo" class="panel-collapse collapse {{isRules}}">
+							<div class="collapse-content">
+								If temperature is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" name="multiple[]" class="inline-form">&deg;C, turn heater <select><option value="on">On</option><option value="off">Off</option></select>
+							</div>
+							<div class="collapse-content">
+								If temperature is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" name="multiple[]" class="inline-form">&deg;C, turn heater <select><option value="on">On</option><option value="off">Off</option></select>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">

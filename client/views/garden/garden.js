@@ -15,7 +15,7 @@ Template.garden.rendered = function () {
 		});
 	});
 
-	var user = loadData("Your Garden");
+	var user = loadData("Your Garden", false);
 
 	chart = c3.generate({
     data: {
@@ -43,14 +43,19 @@ Template.garden.rendered = function () {
 	
 
 	Deps.autorun(function() {
-		var user = loadData("Your Garden");
+		var user = loadData("Your Garden",true);
 		redraw(user);
 		
 	});
 };
 
-function loadData(name){
-	var data = Gardens.findOne({}).temp;
+function loadData(name, check){
+    var data;
+	if(!check){
+     data = [];
+    }else{
+        data = Gardens.findOne().temp;
+    }
 
 	data.unshift(name);
 	return data;
