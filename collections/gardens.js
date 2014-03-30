@@ -45,6 +45,7 @@ Meteor.methods({
 			autoWater: false,
 			autoWaterMin: 20,
 			autoWaterMax: 30,
+			isRules: false,
 			sprinklerOn: false,
 			heaterOn: false,
 			humidifierOn: false,

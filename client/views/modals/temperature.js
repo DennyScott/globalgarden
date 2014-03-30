@@ -1,16 +1,16 @@
 Template.temperature.events({
 
 	'click #ruleButton' : function () {
-		//SET RULE TRUE, AUTO FALSE
+		Session.set('tempType', 'rules');
 	},
 	'click #autoButton' : function() {
-		//SET AUTO TRUE, RULE FALSE
+		Session.set('tempType', 'auto');
 	}
 });
 
 Template.temperature.helpers({
 	isAuto: function () {
-		return "in";
+		return false;
 	},
 	isRules: function() {
 		return false;
