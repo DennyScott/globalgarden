@@ -1,13 +1,13 @@
 <template name="default">
 	<div id="wrap">
 		<div id="navbar-wrapper">
-			{{yield 'navbar'}}
+			{{> yield region = 'navbar'}}
 		</div>
 
 		<div id="main-content">
-			{{yield}}
+			{{> yield}}
 		</div>
 	</div>
 
-	{{yield 'footer'}}
+	{{> yield region = 'footer'}}
 </template>

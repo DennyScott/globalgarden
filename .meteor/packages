@@ -6,12 +6,10 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 iron-router
 accounts-entry
 bootstrap-3
 fast-render
 accounts-ui
 accounts-password
-profile
 font-awesome
