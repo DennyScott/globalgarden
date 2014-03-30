@@ -42,10 +42,32 @@ Template.garden.helpers({
         }
     },
 
+    isHeaterOn: function () {
+        if(this.heaterOn){
+            return "good";
+        }else{
+            return "danger";
+        }
+    },
+
+    isLightsOn: function () {
+        if(this.lightsOn){
+            return "good";
+        }else{
+            return "danger";
+        }
+    },
+
+    isHumidifierOn: function () {
+        if(this.humidifierOn){
+            return "good";
+        }else{
+            return "danger";
+        }
+    },
+
     isSprinklerOn: function () {
-        var gardenObject = Gardens.findOne({_id: this._id});
-        console.log(gardenObject);
-        if(gardenObject.sprinklerOn){
+        if(this.sprinklerOn){
             return "good";
         }else{
             return "danger";
@@ -120,8 +142,8 @@ tooltip: {
 function loadData(name, attribute){
     var data;
     if(!Session.get(attribute)){
-       data = [];
-   }else{
+     data = [];
+ }else{
     data = get_history_days(Session.get('gardenID'),30, attribute);
 }
 data.unshift(name);
@@ -144,12 +166,28 @@ function redraw(){
 
 Template.garden.events({
     'click #toggle-sprinkler': function () {
-        var gardenObject = Gardens.findOne({_id: this._id});
-        if(!gardenObject.sprinklerOn){
+
+        if(!this.sprinklerOn){
 
             Meteor.call("toggleSprinkler", this._id, "medium", "warm");
         }else{
             
         }
+    },
+
+    'click #toggle-heater': function () {
+
+            Meteor.call("toggleHeater", this._id);
+    },
+
+    'click #toggle-humidifier': function () {
+
+            Meteor.call("toggleHumidifier", this._id);
+
+    },
+
+    'click #toggle-lights': function () {
+            Meteor.call("toggleLight", this._id);
+
     }
 });
