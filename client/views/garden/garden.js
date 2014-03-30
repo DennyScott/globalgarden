@@ -5,7 +5,7 @@ var chart;
 
 Template.garden.created = function () {
 
-    Session.set("gardenID", 'vFab3DHPEPqhn4LYc');
+    Session.set("gardenID", '2iNfRdWWnCfTzo2XX');
 };
 
 
@@ -13,7 +13,7 @@ Template.garden.helpers({
     getTemp: function() {
         if(this.temp){
             if(this.temp[this.temp.length-1]){
-                return this.temp[this.temp.length-1].toFixed(2);
+                return this.temp[this.temp.length-1];
             }
         }
     },
@@ -21,7 +21,7 @@ Template.garden.helpers({
     getHumidity: function() {
         if(this.humidity){
             if(this.humidity[this.humidity.length-1]){
-                return this.humidity[this.humidity.length-1].toFixed(2);
+                return this.humidity[this.humidity.length-1];
             }
         }
     },
@@ -29,7 +29,7 @@ Template.garden.helpers({
     getMoisture: function() {
         if(this.moisture){
             if(this.moisture[this.moisture.length-1]){
-                return this.moisture[this.moisture.length-1].toFixed(2);
+                return this.moisture[this.moisture.length-1];
             }
         }
     },
@@ -37,13 +37,13 @@ Template.garden.helpers({
     getLight: function() {
         if(this.light){
             if(this.light[this.light.length-1]){
-                return this.light[this.light.length-1].toFixed(2);
+                return this.light[this.light.length-1];
             }
         }
     },
 
     isSprinklerOn: function () {
-        var gardenObject = Gardens.findOne({_id: Session.get('gardenID')});
+        var gardenObject = Gardens.findOne({_id: this._id});
         console.log(gardenObject);
         if(gardenObject.sprinklerOn){
             return "good";
@@ -122,9 +122,7 @@ function loadData(name, attribute){
     if(!Session.get(attribute)){
        data = [];
    }else{
-    console.log(attribute);
     data = get_history_days(Session.get('gardenID'),30, attribute);
-    console.log(data);
 }
 data.unshift(name);
 return data;
@@ -146,10 +144,10 @@ function redraw(){
 
 Template.garden.events({
     'click #toggle-sprinkler': function () {
-        var gardenObject = Gardens.findOne({_id: Session.get('gardenID')});
+        var gardenObject = Gardens.findOne({_id: this._id});
         if(!gardenObject.sprinklerOn){
 
-            Meteor.call("toggleSprinkler", Session.get('gardenID'), "medium", "warm");
+            Meteor.call("toggleSprinkler", this._id, "medium", "warm");
         }else{
             
         }
