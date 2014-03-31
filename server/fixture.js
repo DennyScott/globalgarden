@@ -24,7 +24,7 @@ var tempVariance = 0.8;
 
 //HEATER VARIABLES
 var tempIterations = 3;
-var heaterTempIncrease = 0.3;
+var heaterTempIncrease = 0.6;
 var heaterMoistureDecrease = 0.1;
 
 //MOISTURE VARIABLES

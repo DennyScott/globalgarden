@@ -80,11 +80,13 @@
 				<div class = "title">
 					Gardens
 				</div>
-				<div class="garden active">
-					Kitchen <span class="good"><i class="fa fa-circle"></i></span>
-				</div>
+				{{#each gardens}}
+					<div class="garden active">
+						{{name}} <span class="good"><i class="fa fa-circle"></i></span>
+					</div>
+				{{/each}}
 
-				<div class="garden">
+				<!-- <div class="garden">
 					Winnipeg Beach <span class="warning"><i class="fa fa-circle"></i></span>
 				</div>
 
@@ -114,7 +116,7 @@
 
 				<div class="garden">
 					Living Room <span class="danger"><i class="fa fa-circle"></i></span>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

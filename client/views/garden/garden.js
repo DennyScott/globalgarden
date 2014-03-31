@@ -18,6 +18,10 @@ Template.garden.helpers({
         }
     },
 
+    gardens: function() {
+      return Gardens.find();
+    },
+
     getHumidity: function() {
         if(this.humidity){
             if(this.humidity[this.humidity.length-1]){

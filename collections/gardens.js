@@ -49,7 +49,8 @@ Meteor.methods({
 			heaterOn: false,
 			humidifierOn: false,
 			lightsOn: false,
-			sprinkler: {}
+			sprinkler: {},
+			isRules: false
 		});
 
 		//Inserts new project into collection
