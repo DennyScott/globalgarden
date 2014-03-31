@@ -13,8 +13,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if loggedIn}}
-          {{checkProfile}}
-            <li><a href="{{pathFor 'entrySignIn'}}">Sign Out</a></li>
+            <li><a href="#" id="sign-out">Sign Out</a></li>
           {{else}}
           <li><a href="{{pathFor 'entrySignIn'}}">Sign In</a></li>
           <li><a href="{{pathFor 'entrySignUp'}}">Sign Up</a></li>

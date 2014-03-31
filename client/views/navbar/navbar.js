@@ -17,6 +17,7 @@ Template.navbar.helpers({
 Template.navbar.events({
 	'click #sign-out': function () {
 		Meteor.logout();
+		Router.go("home");
 	}
 });
 

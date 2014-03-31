@@ -179,6 +179,7 @@ body{
 
 a > i{
 	color:#aaaaaa;
+	cursor:pointer;
 }
 
 .projects > .title {
