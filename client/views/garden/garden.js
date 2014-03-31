@@ -1,7 +1,7 @@
 var globalTemperature = [];
 var temperature,humidity,moisture,light, globalHumidity, globalMoisture, globalLight;
 var chart;
-var gardenID = '2iNfRdWWnCfTzo2XX';
+var gardenID = 'r4a9sQ5YHKkZ8sgvG';
 
 
 Template.garden.created = function () {

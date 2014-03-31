@@ -2,9 +2,11 @@ var tempType = "auto";
 Template.humidity.events({
 	'click #ruleButton' : function () {
 		tempType = "rules";
+		$('#humiditycollapseOne').collapse('hide');
 	},
 	'click #autoButton' : function() {
 		tempType = "auto";
+		$('#humidityCollapseTwo').collapse('hide');
 	},
 	'click #saveChanges' : function() {
 		if(tempType === "rules"){
@@ -41,9 +43,13 @@ Template.humidity.events({
 
 Template.humidity.helpers({
 	isAuto: function () {
-		return "in";
+		if(this.autoHum === true && this.humidityRules === false)
+			return "in";
+		return false;
 	},
 	isRules: function() {
+		if(this.autoHum === true && this.humidityRules === true)
+			return "in";
 		return false;
 	}
 });

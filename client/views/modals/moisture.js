@@ -3,9 +3,11 @@ Template.moisture.events({
 
 	'click #ruleButton' : function () {
 		tempType = "rules";
+		$('#moisturecollapseOne').collapse('hide');
 	},
 	'click #autoButton' : function() {
 		tempType = "auto";
+		$('#moistureCollapseTwo').collapse('hide');
 	},
 	'click #saveChanges' : function() {
 		if(tempType === "rules"){
@@ -40,9 +42,13 @@ Template.moisture.events({
 
 Template.moisture.helpers({
 	isAuto: function () {
-		return "in";
+		if(this.autoWater === true && this.moistureRules === false)
+			return "in";
+		return false;
 	},
 	isRules: function() {
+		if(this.autoWater === true && this.moistureRules === true)
+			return "in";
 		return false;
 	}
 });

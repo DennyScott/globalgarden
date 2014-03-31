@@ -3,9 +3,11 @@ Template.temperature.events({
 
 	'click #ruleButton' : function () {
 		tempType = "rules";
+		$('#collapseOne').collapse('hide');
 	},
 	'click #autoButton' : function() {
 		tempType = "auto";
+		$('#collapseTwo').collapse('hide');
 	},
 	'click #saveChanges' : function() {
 		if(tempType === "rules"){
@@ -40,9 +42,13 @@ Template.temperature.events({
 
 Template.temperature.helpers({
 	isAuto: function () {
+		if(this.autoHeat === true && this.heatRules === false)
+			return "in";
 		return false;
 	},
 	isRules: function() {
+		if(this.autoHeat === true && this.heatRules === true)
+			return "in";
 		return false;
 	}
 });
