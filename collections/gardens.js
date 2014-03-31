@@ -22,10 +22,6 @@ Meteor.methods({
 			throw new Meteor.Error(422, 'Error 422: Project must have a name');
 		}
 
-		if(Gardens.findOne({"name" : gardenAttributes.name})) {
-			throw new Meteor.Error(423, 'Must have a unique name');
-		}
-
 		//filling in other keys
 		var proj = _.extend(_.pick(gardenAttributes, 'name', 'type'), {
 			user_id: user._id,

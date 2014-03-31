@@ -8,16 +8,19 @@ get_history_days = function(gardenId, days){
 	var history;
 	var dateFound = false;
 	var i = 0;
-	while(!dateFound && i < found.date.length){
-		if(found.date[i]>= start){
-			dateFound = true;
-			console.log("hit");
-		} else {
-			i++;
-			console.log("inc");
+	var returnArray = [];
+	if(found.date){
+		while(!dateFound && i < found.date.length){
+			if(found.date[i]>= start){
+				dateFound = true;
+				console.log("hit");
+			} else {
+				i++;
+				console.log("inc");
+			}
 		}
+		returnArray = found.date.slice(i);
 	}
-	var returnArray = found.date.slice(i);
 	return returnArray;
 };
 

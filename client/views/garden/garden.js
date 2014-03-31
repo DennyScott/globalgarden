@@ -21,7 +21,7 @@ Template.garden.helpers({
     },
 
     gardens: function() {
-      return Gardens.find();
+      return Gardens.find({user_id: Meteor.userId()});
   },
 
   getHumidity: function() {

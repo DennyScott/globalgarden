@@ -1,13 +1,3 @@
-
-// if(Gardens.find().count()===0){
-// 	Gardens.insert({
-// 		temp : [4,8,15,16,23,42],
-// 		humidity : [4,8,15,16,23,42],
-// 		moisture : [4,8,15,16,23,42],
-// 		light : [4,8,15,16,23,42]
-// 	});
-// }
-
 //TIME VARIABLES
 var runId;
 var timeScale = 1;
@@ -19,7 +9,7 @@ var minimumIntervalTime = 3000;
 var tempInc = 0;
 var tempUpOdd = 1; //Out of 10
 var tempMax = 28;
-var tempMin = 19;
+var tempMin = 17;
 var tempVariance = 0.8;
 
 //HEATER VARIABLES
@@ -31,7 +21,7 @@ var heaterMoistureDecrease = 0.1;
 var moistInc = 0;
 var moistUpOdd = 1; //Out of 10
 var moistMax = 28;
-var moistMin = 4;
+var moistMin = 0;
 var moistVariance = 0.2;
 
 //SPINKLER VARIABLES
@@ -46,7 +36,7 @@ var sprinklerMoistureHeavyIncrease = 60;
 var humInc = 0;
 var humUpOdd = 2; //Out of 10
 var humMax = 28;
-var humMin = 21;
+var humMin = 16;
 var humVariance = 0.3;
 var humFixMult = 4;
 
