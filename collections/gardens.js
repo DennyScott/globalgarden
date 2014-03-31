@@ -60,6 +60,52 @@ Meteor.methods({
 		return gardenID;
 	},
 
+	createFirstGarden: function (gardenAttributes, user) {
+		// var userName = Meteor.user().profile.name;
+
+		if(!gardenAttributes.name){
+			throw new Meteor.Error(422, 'Error 422: Project must have a name');
+		}
+
+		//filling in other keys
+		var proj = _.extend(_.pick(gardenAttributes, 'name', 'type'), {
+			user_id: user._id,
+			// user_name: userName,
+			created: new Date().getTime(),
+			temp: [],
+			humidity: [],
+			moisture: [],
+			light: [],
+			date: [],
+			autoHeat: false,
+			autoHeatMin: 20,
+			autoHeatMax: 30,
+			autoHum: false,
+			autoHumMin: 20,
+			autoHumMax: 30,
+			autoWater: false,
+			autoWaterMin: 20,
+			autoWaterMax: 30,
+			autoLight: false,
+			autoLightMin: 7,
+			autoLightMax: 19,
+			heatRules: false,
+			moistureRules: false,
+			humidityRules: false,
+			sprinklerOn: false,
+			heaterOn: false,
+			humidifierOn: false,
+			lightsOn: false,
+			sprinkler: {},
+		});
+
+		//Inserts new project into collection
+		var gardenID = Gardens.insert(proj);
+		//returns the ID of the new project
+		return gardenID;
+	},
+
+
 	insertTemperature: function(gardenId, temp){
 		found = Gardens.findOne(gardenId);
 		if(found){
@@ -149,6 +195,14 @@ Meteor.methods({
 		if(found){
 			found.moistureRules = false;
 			Gardens.update(gardenId, found);
+		}
+	},
+	removeGarden: function(gardenId){
+		var user = Meteor.user();
+
+		var amount = Gardens.find({"user_id": user._id}).count;
+		if(amount > 1){
+			Gardens.remove(gardenId);
 		}
 	}
 

@@ -5,3 +5,8 @@ Meteor.startup(function() {
 		}
 	});
 });
+
+Accounts.onCreateUser(function(options, user) {
+  Meteor.call("createFirstGarden", {name: "Kitchen-Demo", type: "Tulips"}, user);
+  return user;
+});

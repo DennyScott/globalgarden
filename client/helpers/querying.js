@@ -1,27 +1,32 @@
 get_history_days = function(gardenId, days){
-	console.log('in days');
-	console.log(gardenId);
-	console.log(days);
-	var found = Gardens.findOne(gardenId);
-	console.log(found);
-	var start = new Date(new Date().setDate(new Date().getDate()-days));
-	var history;
-	var dateFound = false;
-	var i = 0;
-	var returnArray = [];
-	if(found.date){
-		while(!dateFound && i < found.date.length){
-			if(found.date[i]>= start){
-				dateFound = true;
-				console.log("hit");
-			} else {
-				i++;
-				console.log("inc");
+	// if(!Session.get('currentID')){
+	// 	var garden = Gardens.findOne({user_id: Meteor.userId()});
+	// 	if(typeof garden !== 'undefined'){
+	// 		Session.set('currentID', garden._id);
+	// 	}
+	// 	Router.go('garden');
+	// } else {
+		var found = Gardens.findOne(gardenId);
+
+		var start = new Date(new Date().setDate(new Date().getDate()-days));
+		var history;
+		var dateFound = false;
+		var i = 0;
+		var returnArray = [];
+		if(found){
+			if(found.date){
+				while(!dateFound && i < found.date.length){
+					if(found.date[i]>= start){
+						dateFound = true;
+					} else {
+						i++;
+					}
+				}
+				returnArray = found.date.slice(i);
 			}
 		}
-		returnArray = found.date.slice(i);
-	}
-	return returnArray;
+		return returnArray;
+	// }
 };
 
 get_history_attribute = function(gardenId, amount, attribute){

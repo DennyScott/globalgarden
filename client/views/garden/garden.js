@@ -103,44 +103,49 @@ Template.garden.rendered = function () {
 
 
 
-Deps.autorun(function() {
-   days = get_history_days(Session.get('currentID'), Session.get('days'));
-   temperature = loadData("Temperature", "temperature",days);
-   humidity = loadData("Humidity", "humidity",days);
+    Deps.autorun(function() {
+        if(typeof Session.get('currentID') !== "undefined"){
+            console.log(Session.get('currentID'));
+           days = get_history_days(Session.get('currentID'), Session.get('days'));
+           if(days){
+               temperature = loadData("Temperature", "temperature",days);
+               humidity = loadData("Humidity", "humidity",days);
 
-   moisture = loadData("Moisture", "moisture",days);
-   light = loadData("Light", "light",days);
-   if(typeof chart==='undefined'){
-    chart = c3.generate({
-        data: {
-          // x: 'x',
-          columns: [
-          // ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-          globalTemperature,
-          temperature,
-          humidity,
-          moisture,
-          light
+               moisture = loadData("Moisture", "moisture",days);
+               light = loadData("Light", "light",days);
+               if(typeof chart==='undefined'){
+                chart = c3.generate({
+                    data: {
+                          // x: 'x',
+                          columns: [
+                          // ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+                          globalTemperature,
+                          temperature,
+                          humidity,
+                          moisture,
+                          light
 
-          ]
-      },
-      zoom: {
-       enabled : true
-   },
-   axis : {
-        // x : {
-            // type : 'timeseries'
-        // }
-    },
-    tooltip: {
-       show: false
+                          ]
+                      },
+                      zoom: {
+                       enabled : true
+                   },
+                   axis : {
+                        // x : {
+                            // type : 'timeseries'
+                        // }
+                    },
+                    tooltip: {
+                       show: false
+                   }
+                });
+            }else{
+               redraw();
+            }
+        }
    }
 });
-}else{
-   redraw();
-}
 
-});
 };
 
 function loadData(name, attribute, days){

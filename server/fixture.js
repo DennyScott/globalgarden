@@ -1,8 +1,8 @@
 //TIME VARIABLES
 var runId;
 var timeScale = 1;
-var baseIterationTime = 7000;
-var iterationTime = 7000;
+var baseIterationTime = 30000;
+var iterationTime = 30000;
 var minimumIntervalTime = 3000;
 
 //TEMPERATURE VARIABLES
@@ -406,6 +406,8 @@ function updateRun(){
 	console.log("Next Iteration in: " + iterationTime);
 }
 
+//STARTUP FUNCTIONS
+updateRun();
 runId = Meteor.setInterval(updateRun,iterationTime);
 
 
