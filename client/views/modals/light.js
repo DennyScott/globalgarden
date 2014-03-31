@@ -1,10 +1,18 @@
+var tempType = "auto";
 Template.light.events({
 
-	'click #lightruleButton' : function () {
-		//SET RULE TRUE, AUTO FALSE
+	'click #ruleButton' : function () {
+		tempType = "rules";
 	},
-	'click #lightautoButton' : function() {
-		//SET AUTO TRUE, RULE FALSE
+	'click #autoButton' : function() {
+		tempType = "auto";
+	},
+	'click #saveChanges' : function() {
+		if (tempType === "auto"){
+			Meteor.call("newLightMax", this._id, 19);
+			Meteor.call("newLightMin", this._id, 7);
+			Meteor.call("autoLightOn", this._id);
+		}
 	}
 });
 

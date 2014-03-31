@@ -13,7 +13,7 @@
 							<div class="collapse-content">
 							Keep the garden at this constant humidity (&deg; C) 
 						</div>
-						<input type="text" name="humidity" class="form-control" id="humidity">
+						<input type="text" name="humidity" class="form-control" id="humCheck">
 						</div>
 					</div>
 					<hr>
@@ -21,17 +21,17 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#humidityCollapseTwo"><h4>Rules</h4></button>
 						<div id="humidityCollapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
+								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="humMin" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
 							</div>
 							<div class="collapse-content">
-								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
+								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="humMax" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+					<button type="button" id="saveChanges" class="btn btn-primary" data-dismiss="modal">Save changes</button>
 				</div>
 			</div>
 		</div>

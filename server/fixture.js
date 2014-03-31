@@ -11,8 +11,8 @@
 //TIME VARIABLES
 var runId;
 var timeScale = 1;
-var baseIterationTime = 10000;
-var iterationTime = 10000;
+var baseIterationTime = 7000;
+var iterationTime = 7000;
 var minimumIntervalTime = 3000;
 
 //TEMPERATURE VARIABLES
@@ -73,11 +73,11 @@ Meteor.methods({
 	setTimeScale: function (newTimeScale){
 		changeTimeScale(newTimeScale);
 	},
-	newSpinklerMin: function(gardenId, min){
-		setSpinklerMin(gardenId, min);
+	newSprinklerMin: function(gardenId, min){
+		setSprinklerMin(gardenId, min);
 	},
-	newSpinklerMax: function(gardenId, max){
-		setSpinklerMax(gardenId, max);
+	newSprinklerMax: function(gardenId, max){
+		setSprinklerMax(gardenId, max);
 	},
 	newHeaterMax: function(gardenId, max){
 		setHeaterMax(gardenId, max);
@@ -91,6 +91,18 @@ Meteor.methods({
 	newHumidifierMax: function(gardenId, max){
 		setHumidifierMax(gardenId, max);
 	},
+	newLightMin: function(gardenId, min){
+		setAutoLightMin(gardenId, min);
+	},
+	newLightMax: function(gardenId, max){
+		setAutoLightMax(gardenId, max);
+	},
+	autoLightOn: function(gardenId){
+		setAutoLightOn(gardenId);
+	},
+	autoLightOff: function(gardenId){
+		setAutoLightOff(gardenId);
+	},
 	toggleSprinkler: function (gardenId, waterAmount, waterTemperature) {
 		waterPlants(gardenId, waterAmount, waterTemperature);
 	},
@@ -102,6 +114,16 @@ Meteor.methods({
 			val = "OFF";
 		}
 		console.log("Auto Sprinklers: " + val);
+	},
+	autoSprinklerOn: function(gardenId){
+		var val ="ON";
+		setAutoSprinklerOn(gardenId);
+		console.log("Auto Sprinkler: " + val);
+	},
+	autoSprinklerOff: function(gardenId){
+		var val ="OFF";
+		setAutoSprinklerOff(gardenId);
+		console.log("Auto Sprinkler: " + val);
 	},
 	checkAutoSpinkler: function (gardenId){
 		return isAutoWatered(gardenId);
@@ -115,6 +137,16 @@ Meteor.methods({
 		}
 		console.log("Auto Heater: " + val);
 	},
+	autoHeaterOn: function(gardenId){
+		var val ="ON";
+		setAutoHeaterOn(gardenId);
+		console.log("Auto Heater: " + val);
+	},
+	autoHeaterOff: function(gardenId){
+		var val ="OFF";
+		setAutoHeaterOff(gardenId);
+		console.log("Auto Heater: " + val);
+	},
 	checkAutoHeater: function (gardenId){
 		return isAutoHeated(gardenId);
 	},
@@ -125,6 +157,16 @@ Meteor.methods({
 		} else {
 			val = "OFF";
 		}
+		console.log("Auto Humidifier: " + val);
+	},
+	autoHumidifierOn: function(gardenId){
+		var val ="ON";
+		setAutoHumdifierOn(gardenId);
+		console.log("Auto Humidifier: " + val);
+	},
+	autoHumidifierOff: function(gardenId){
+		var val ="OFF";
+		setAutoHumdifierOff(gardenId);
 		console.log("Auto Humidifier: " + val);
 	},
 	checkAutoHumidifier: function (gardenId){
@@ -280,6 +322,13 @@ function updateRun(){
 			if(heaterIsOn){
 				moistureAdjust -= moistVariance * heaterMoistureDecrease;
 			}
+			if(garden.autoWater){
+				if(!garden.sprinklerOn){
+					if(moisture < garden.autoWaterMin){
+						waterPlants(garden._id, "medium", "warm");
+					}
+				}
+			}
 			if(garden.sprinklerOn){
 					moistureAdjust = moistureAdjust + garden.sprinkler.moistModifier;
 			}
@@ -318,6 +367,18 @@ function updateRun(){
 
 			
 			//LIGHT
+			if(garden.autoLight){
+				var today = new Date().getHours();
+				if (today >= garden.autoLightMin && today <= garden.autoLightMax) {
+					if(!lightsIsOn){
+						lightOn(garden._id);
+					}
+				} else {
+					if(lightsIsOn){
+						lightOff(garden._id);
+					}
+				}
+			}
 			if(lightsIsOn){
 				light = 30;
 			} else {
@@ -470,6 +531,30 @@ function switchLight(gardenId) {
 	return returnVal;
 }
 
+function setAutoLightOn(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoLight = true;
+	Gardens.update(gardenId, found);
+}
+
+function setAutoLightOff(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoLight = false;
+	Gardens.update(gardenId, found);
+}
+
+function setAutoLightMax(gardenId, max){
+	var found = Gardens.findOne(gardenId);
+	found.autoLightMax = parseFloat(max);
+	Gardens.update(gardenId, found);
+}
+
+function setAutoLightMin(gardenId, min){
+	var found = Gardens.findOne(gardenId);
+	found.autoLightMin = parseFloat(min);
+	Gardens.update(gardenId, found);
+}
+
 function lightOn(gardenId) {
 	var found = Gardens.findOne(gardenId);
 	found.lightsOn = true;
@@ -494,12 +579,14 @@ function isLit(gardenId){
 
 function setHeaterMax(gardenId, max){
 	var found = Gardens.findOne(gardenId);
-	found.autoHeatMax = max;
+	found.autoHeatMax = parseFloat(max);
+	Gardens.update(gardenId, found);
 }
 
 function setHeaterMin(gardenId, min){
 	var found = Gardens.findOne(gardenId);
-	found.autoHeatMin = min;
+	found.autoHeatMin = parseFloat(min);
+	Gardens.update(gardenId, found);
 }
 
 function switchAutoHeater(gardenId){
@@ -526,14 +613,29 @@ function isAutoHeated(gardenId){
 	return returnVal;
 }
 
+function setAutoHeaterOn(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoHeat = true;
+	Gardens.update(gardenId, found);
+}
+
+function setAutoHeaterOff(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoHeat = false;
+	heaterOff(gardenId);
+	Gardens.update(gardenId, found);
+}
+
 function setHumidifierMax(gardenId, max){
 	var found = Gardens.findOne(gardenId);
-	found.autoHumMax = max;
+	found.autoHumMax = parseFloat(max);
+	Gardens.update(gardenId, found);
 }
 
 function setHumidifierMin(gardenId, min){
 	var found = Gardens.findOne(gardenId);
-	found.autoHumMin = min;
+	found.autoHumMin = parseFloat(min);
+	Gardens.update(gardenId, found);
 }
 
 function switchAutoHumidifier(gardenId){
@@ -550,6 +652,19 @@ function switchAutoHumidifier(gardenId){
 	return returnVal;
 }
 
+function setAutoHumdifierOn(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoHum = true;
+	Gardens.update(gardenId, found);
+}
+
+function setAutoHumdifierOff(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoHum = false;
+	humidifierOff(gardenId);
+	Gardens.update(gardenId, found);
+}
+
 function isAutoHumidified(gardenId){
 	var found = Gardens.findOne(gardenId);
 	var returnVal = false;
@@ -560,14 +675,17 @@ function isAutoHumidified(gardenId){
 	return returnVal;
 }
 
-function setSpinklerMin(gardenId, min){
+function setSprinklerMin(gardenId, min){
 	var found = Gardens.findOne(gardenId);
-	found.autoWaterMin = min;
+	found.autoWaterMin = parseFloat(min);
+	Gardens.update(gardenId, found);
 }
 
-function setSpinklerMax(gardenId, max){
+function setSprinklerMax(gardenId, max){
 	var found = Gardens.findOne(gardenId);
-	found.autoWaterMax = max;
+	found.autoWaterMax = parseFloat(max);
+	console.log(found.autoWaterMax);
+	Gardens.update(gardenId, found);
 }
 
 function switchAutoSprinkler(gardenId){
@@ -582,6 +700,19 @@ function switchAutoSprinkler(gardenId){
 	Gardens.update(gardenId, found);
 
 	return returnVal;
+}
+
+function setAutoSprinklerOn(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoWater = true;
+	Gardens.update(gardenId, found);
+	console.log("auto on");
+}
+
+function setAutoSprinklerOff(gardenId){
+	var found = Gardens.findOne(gardenId);
+	found.autoWater = false;
+	Gardens.update(gardenId, found);
 }
 
 function isAutoWatered(gardenId){
