@@ -106,6 +106,54 @@ Meteor.methods({
 			found.date[found.date.length] = new Date();
 			Gardens.update(gardenId, found);
 		}
+	},
+	heatRulesOn: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.heatRules = true;
+			Gardens.update(gardenId, found);
+		}
+	},
+	heatRulesOff: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.heatRules = false;
+			Gardens.update(gardenId, found);
+		}
+	},
+	humidityRulesOn: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.humidityRules = true;
+			Gardens.update(gardenId, found);
+		}
+	},
+	humidityRulesOff: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.humidityRules = false;
+			Gardens.update(gardenId, found);
+		}
+	},
+	moistureRulesOn: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.moistureRules = true;
+			Gardens.update(gardenId, found);
+		}
+	},
+	moistureRulesOff: function(gardenId){
+		var found = Gardens.findOne(gardenId);
+
+		if(found){
+			found.moistureRules = false;
+			Gardens.update(gardenId, found);
+		}
 	}
 
 });
