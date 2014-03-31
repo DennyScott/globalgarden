@@ -182,6 +182,10 @@ a > i{
 	cursor:pointer;
 }
 
+a > i:hover{
+	color: #87b87f;
+}
+
 .projects > .title {
 	margin-bottom:10px;
 }

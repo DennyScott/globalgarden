@@ -22,6 +22,7 @@ Template.humidity.events({
 				Meteor.call("newHumidifierMax", this._id, tempMax);
 				Meteor.call("newHumidifierMin", this._id, tempMin);
 				Meteor.call("autoHumidifierOn", this._id);
+				Meteor.call("humidityRulesOn", this._id);
 			}
 		} else if (tempType === "auto"){
 			var tempCheck = $('#humCheck').val();
@@ -36,6 +37,7 @@ Template.humidity.events({
 				Meteor.call("newHumidifierMax", this._id, tempCheck+1);
 				Meteor.call("newHumidifierMin", this._id, tempCheck-1);
 				Meteor.call("autoHumidifierOn", this._id);
+				Meteor.call("humidityRulesOff", this._id);
 			}
 		}
 	}
