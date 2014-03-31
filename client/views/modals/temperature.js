@@ -23,6 +23,7 @@ Template.temperature.events({
 				Meteor.call("newHeaterMax", this._id, tempMax);
 				Meteor.call("newHeaterMin", this._id, tempMin);
 				Meteor.call("autoHeaterOn", this._id);
+				Meteor.call("heatRulesOn", this._id);
 			}
 		} else if (tempType === "auto"){
 			var tempCheck = $('#temp').val();
@@ -35,6 +36,7 @@ Template.temperature.events({
 				Meteor.call("newHeaterMax", this._id, tempCheck+1);
 				Meteor.call("newHeaterMin", this._id, tempCheck-1);
 				Meteor.call("autoHeaterOn", this._id);
+				Meteor.call("heatRulesOff", this._id);
 			}
 		}
 	}

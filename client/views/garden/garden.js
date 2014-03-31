@@ -1,7 +1,6 @@
 var globalTemperature = [];
 var temperature,humidity,moisture,light, globalHumidity, globalMoisture, globalLight;
 var chart;
-var gardenID = 'r4a9sQ5YHKkZ8sgvG';
 
 
 Template.garden.created = function () {
@@ -78,6 +77,12 @@ isSprinklerOn: function () {
     }else{
         return "danger";
     }
+},
+
+setActive : function() {
+    if(this._id === Session.get('currentID')){
+        return 'active';
+    }
 }
 });
 
@@ -95,7 +100,7 @@ Template.garden.rendered = function () {
 
 
 Deps.autorun(function() {
-   days = get_history_days(gardenID, Session.get('days'));
+   days = get_history_days(Session.get('currentID'), Session.get('days'));
    temperature = loadData("Temperature", "temperature",days);
    humidity = loadData("Humidity", "humidity",days);
 
@@ -140,7 +145,7 @@ function loadData(name, attribute, days){
      data = [];
 
  }else{
-    data = get_history_attribute(gardenID,days, attribute);
+    data = get_history_attribute(Session.get('currentID'),days, attribute);
 }
 data.unshift(name);
 return data;
@@ -200,6 +205,12 @@ Template.garden.events({
         }else{
 
         }
+    },
+
+    'click .garden' : function(evt, template){
+        var garden = $(evt.target).attr('id');
+        Session.set('currentID', garden);
+        Router.go('garden');
     },
 
     'click #toggle-heater': function () {

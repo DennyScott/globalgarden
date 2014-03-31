@@ -23,6 +23,7 @@ Template.moisture.events({
 				Meteor.call("newSprinklerMax", this._id, tempMax);
 				Meteor.call("newSprinklerMin", this._id, tempMin);
 				Meteor.call("autoSprinklerOn", this._id);
+				Meteor.call("moistureRulesOn", this._id);
 			}
 		} else if (tempType === "auto"){
 			var tempCheck = $('#moistCheck').val();
@@ -35,6 +36,7 @@ Template.moisture.events({
 				Meteor.call("newSprinklerMax", this._id, tempCheck+1);
 				Meteor.call("newSprinklerMin", this._id, tempCheck-1);
 				Meteor.call("autoSprinklerOn", this._id);
+				Meteor.call("moistureRulesOff", this._id);
 			}
 		}
 	}
