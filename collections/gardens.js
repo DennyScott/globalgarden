@@ -45,13 +45,15 @@ Meteor.methods({
 			autoWater: false,
 			autoWaterMin: 20,
 			autoWaterMax: 30,
+			autoLight: false,
+			autoLightMin: 7,
+			autoLightMax: 19,
 			isRules: false,
 			sprinklerOn: false,
 			heaterOn: false,
 			humidifierOn: false,
 			lightsOn: false,
 			sprinkler: {},
-			isRules: false
 		});
 
 		//Inserts new project into collection
