@@ -43,9 +43,7 @@ Template.garden.helpers({
     },
 
     isSprinklerOn: function () {
-        var gardenObject = Gardens.findOne({_id: this._id});
-        console.log(gardenObject);
-        if(gardenObject.sprinklerOn){
+        if(this.sprinklerOn){
             return "good";
         }else{
             return "danger";
