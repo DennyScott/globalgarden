@@ -18,6 +18,7 @@ Template.garden.helpers({
                 return this.temp[this.temp.length-1];
             }
         }
+        return 0;
     },
 
     gardens: function() {
@@ -30,6 +31,7 @@ Template.garden.helpers({
             return this.humidity[this.humidity.length-1];
         }
     }
+    return 0;
 },
 
 getMoisture: function() {
@@ -38,6 +40,7 @@ getMoisture: function() {
             return this.moisture[this.moisture.length-1];
         }
     }
+    return 0;
 },
 
 getLight: function() {
@@ -46,6 +49,7 @@ getLight: function() {
             return this.light[this.light.length-1];
         }
     }
+    return 0;
 },
 
 isHeaterOn: function () {

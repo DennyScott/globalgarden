@@ -8,6 +8,7 @@
 				</div>
 			</div>
 		</div>
+		{{setId}}
 		<div id="user-content">
 			
 			<div class="information col-md-3 col-xs-12">
@@ -81,7 +82,7 @@
 					Gardens
 				</div>
 				{{#each gardens}}
-					<div class="garden">
+					<div class="garden {{active}}">
 						{{name}} <span class="good"><i class="fa fa-circle"></i></span>
 					</div>
 				{{/each}}
