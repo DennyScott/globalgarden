@@ -1,0 +1,26 @@
+<template name="newgarden">
+	<div class="modal fade" id="newgarden" tabindex="-1" role="dialog" aria-labelledby="lightlabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 class="modal-title" id="lightlabel">Create Garden</h3>
+				</div>
+				<div class="modal-body">
+					<div class="modal-section" id="Data">
+						<div class="alert alert-danger" id="create-error" style="display:none">Please enter data in each form </div>
+						<label>Garden Name</label>
+						<input type="text"  class="form-control" id="gardenname" name="gardentype">
+						<hr>
+						<label>Garden Type</label>
+						<input type="text"  class="form-control" id="gardentype" name="gardentype">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" id="createGarden" class="btn btn-primary">Create</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

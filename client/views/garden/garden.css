@@ -31,6 +31,10 @@ body{
 	font-family: Maven Pro Regular;
 }
 
+#chart{
+	max-height: 342px;
+}
+
 .projectManagement{
 	font-size:1.5em;
 	color:#aaaaaa;
