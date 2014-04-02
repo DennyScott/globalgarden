@@ -50,6 +50,12 @@ Template.humidity.helpers({
 			returnVal = "in";
 		return returnVal;
 	},
+	isNeither: function () {
+		var returnVal = "";
+		if(this.autoHum === false)
+			returnVal = "in";
+		return returnVal;
+	},
 	isRules: function() {
 		var returnVal = "";
 		if(this.autoHum === true && this.humidityRules === true)

@@ -49,6 +49,12 @@ Template.temperature.helpers({
 			returnVal = "in";
 		return returnVal;
 	},
+	isNeither: function () {
+		var returnVal = "";
+		if(this.autoHeat === false)
+			returnVal = "in";
+		return returnVal;
+	},
 	isRules: function() {
 		var returnVal = "";
 		if(this.autoHeat === true && this.heatRules === true)

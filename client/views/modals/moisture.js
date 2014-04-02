@@ -49,6 +49,12 @@ Template.moisture.helpers({
 			returnVal = "in";
 		return returnVal;
 	},
+	isNeither: function () {
+		var returnVal = "";
+		if(this.autoWater === false)
+			returnVal = "in";
+		return returnVal;
+	},
 	isRules: function() {
 		var returnVal = "";
 		if(this.autoWater === true && this.moistureRules === true)
