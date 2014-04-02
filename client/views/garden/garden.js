@@ -109,18 +109,8 @@ Template.garden.rendered = function () {
 
 };
 
-function runChart() {
-      if(typeof Session.get('currentID') !== "undefined"){
-            console.log(Session.get('currentID'));
-           days = get_history_days(Session.get('currentID'), Session.get('days'));
-           if(days){
-               temperature = loadData("Temperature", "temperature",days);
-               humidity = loadData("Humidity", "humidity",days);
-
-               moisture = loadData("Moisture", "moisture",days);
-               light = loadData("Light", "light",days);
-               if(typeof chart==='undefined'){
-                chart = c3.generate({
+createChart = function(){
+    chart = c3.generate({
                     data: {
                           // x: 'x',
                           columns: [
@@ -145,6 +135,24 @@ function runChart() {
                        show: false
                    }
                 });
+};
+
+collectData = function(){
+    temperature = loadData("Temperature", "temperature",days);
+               humidity = loadData("Humidity", "humidity",days);
+
+               moisture = loadData("Moisture", "moisture",days);
+               light = loadData("Light", "light",days);
+};
+
+function runChart() {
+      if(typeof Session.get('currentID') !== "undefined"){
+            console.log(Session.get('currentID'));
+           days = get_history_days(Session.get('currentID'), Session.get('days'));
+           if(days){
+               collectData();
+               if(typeof chart==='undefined'){
+                createChart();
             }else{
                redraw();
             }
@@ -164,7 +172,15 @@ data.unshift(name);
 return data;
 }
 
+unloadChart = function(){
+    chart.unload("Temperature");
+    chart.unload("Moisture");
+    chart.unload("Humidity");
+    chart.unload("Light");
+};
+
 function redraw(){
+
     if(Session.get('temperature')){
         chart.load({
             columns: [

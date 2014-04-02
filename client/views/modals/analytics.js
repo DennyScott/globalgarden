@@ -16,9 +16,9 @@ Template.analytics.events({
 		}
 		Session.set('days', days);
 
-		getChart().unload();
 		var chartType = $("#chartType").val();
-		console.log(chartType);
+		collectData();
+		createChart();
 
 		if(chartType === "line"){
 			getChart().toLine();
@@ -33,6 +33,7 @@ Template.analytics.events({
 		}else if(chartType === "scatter"){
 			getChart().toScatter();
 		}
+
 
 		
 	}
