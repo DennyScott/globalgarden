@@ -44,13 +44,30 @@ Template.temperature.events({
 
 Template.temperature.helpers({
 	isAuto: function () {
+		var returnVal = "";
 		if(this.autoHeat === true && this.heatRules === false)
-			return "in";
-		return false;
+			returnVal = "in";
+		return returnVal;
 	},
 	isRules: function() {
+		var returnVal = "";
 		if(this.autoHeat === true && this.heatRules === true)
-			return "in";
-		return false;
-	}
+			returnVal = "in";
+		return returnVal;
+	},
+	getTemp: function() {
+        if(this.autoHeat){
+                return this.autoHeatMax-1;
+        }
+    },
+    getTempMax: function() {
+        if(this.autoHeat){
+                return this.autoHeatMax;
+        }
+    },
+    getTempMin: function() {
+        if(this.autoHeat){
+                return this.autoHeatMin;
+        }
+    }
 });

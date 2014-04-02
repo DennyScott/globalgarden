@@ -16,7 +16,7 @@
 							<div class="collapse-content">
 								Keep the garden at this constant temperature (26&deg;C recommended) 
 							</div>
-							<input type="text" name="temp" class="form-control" id="temp">
+							<input type="text" name="temp" class="form-control" id="temp" value="{{getTemp}}">
 						</div>
 					</div>
 					<hr>
@@ -24,10 +24,10 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#collapseTwo"><h4>Rules</h4></button>
 						<div id="collapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If temperature is Less than <input type="text" id="tempMin" name="multiple[]" class="inline-form">&deg;C, turn heater On
+								If temperature is Less than <input type="text" id="tempMin" name="multiple[]" class="inline-form" value="{{getTempMin}}">&deg;C, turn heater On
 							</div>
 							<div class="collapse-content">
-								If temperature is Greater than<input type="text" id="tempMax" name="multiple[]" class="inline-form">&deg;C, turn heater
+								If temperature is Greater than<input type="text" id="tempMax" name="multiple[]" class="inline-form" value="{{getTempMax}}">&deg;C, turn heater
 							</div>
 						</div>
 					</div>

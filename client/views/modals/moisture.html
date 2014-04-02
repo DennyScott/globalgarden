@@ -13,7 +13,7 @@
 							<div class="collapse-content">
 							Keep the garden at this constant moisture (40-60% recommended%)
 						</div>
-						<input type="text" name="moisture" class="form-control" id="moistCheck">
+						<input type="text" name="moisture" class="form-control" id="moistCheck" value="{{getMoisture}}">
 						</div>
 					</div>
 					<hr>
@@ -21,10 +21,10 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#moistureCollapseTwo"><h4>Rules</h4></button>
 						<div id="moistureCollapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If moisture is Less than <input type="text" id="moistMin" name="multiple[]" class="inline-form">%, turn sprinkler On
+								If moisture is Less than <input type="text" id="moistMin" name="multiple[]" class="inline-form" value="{{getMoistureMin}}">%, turn sprinkler On
 							</div>
 							<div class="collapse-content">
-								If moisture is Greater than <input type="text" id="moistMax" name="multiple[]" class="inline-form">%, turn sprinkler Off
+								If moisture is Greater than <input type="text" id="moistMax" name="multiple[]" class="inline-form" value="{{getMoistureMax}}">%, turn sprinkler Off
 							</div>
 						</div>
 					</div>

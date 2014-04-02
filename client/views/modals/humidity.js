@@ -45,13 +45,30 @@ Template.humidity.events({
 
 Template.humidity.helpers({
 	isAuto: function () {
+		var returnVal = "";
 		if(this.autoHum === true && this.humidityRules === false)
-			return "in";
-		return false;
+			returnVal = "in";
+		return returnVal;
 	},
 	isRules: function() {
+		var returnVal = "";
 		if(this.autoHum === true && this.humidityRules === true)
-			return "in";
-		return false;
+			returnVal = "in";
+		return returnVal;
+	},
+	getHumidity: function() {
+	    if(this.autoHum){
+            	return this.autoHumMax-1;
+    	}
+	},
+	getHumidityMax: function() {
+	    if(this.autoHum){
+            	return this.autoHumMax;
+    	}
+	},
+	getHumidityMin: function() {
+	    if(this.autoHum){
+            	return this.autoHumMin;
+    	}
 	}
 });

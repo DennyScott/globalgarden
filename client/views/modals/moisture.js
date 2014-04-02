@@ -44,13 +44,30 @@ Template.moisture.events({
 
 Template.moisture.helpers({
 	isAuto: function () {
+		var returnVal = "";
 		if(this.autoWater === true && this.moistureRules === false)
-			return "in";
-		return false;
+			returnVal = "in";
+		return returnVal;
 	},
 	isRules: function() {
+		var returnVal = "";
 		if(this.autoWater === true && this.moistureRules === true)
-			return "in";
-		return false;
+			returnVal = "in";
+		return returnVal;
+	},
+	getMoisture: function() {
+	    if(this.autoWater){
+	            return this.autoWaterMax-1;
+	    }
+	},
+	getMoistureMin: function() {
+	    if(this.autoWater){
+	            return this.autoWaterMin;
+	    }
+	},
+	getMoistureMax: function() {
+	    if(this.autoWater){
+	            return this.autoWaterMax;
+	    }
 	}
 });

@@ -22,5 +22,12 @@ Template.light.helpers({
 	},
 	isRules: function() {
 		return false;
+	},
+	getLight: function() {
+	    if(this.light){
+	        if(this.light[this.light.length-1]){
+	            return this.light[this.light.length-1];
+	        }
+	    }
 	}
 });
