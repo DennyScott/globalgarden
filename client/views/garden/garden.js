@@ -104,7 +104,13 @@ Template.garden.rendered = function () {
 
 
     Deps.autorun(function() {
-        if(typeof Session.get('currentID') !== "undefined"){
+      runChart();
+});
+
+};
+
+function runChart() {
+      if(typeof Session.get('currentID') !== "undefined"){
             console.log(Session.get('currentID'));
            days = get_history_days(Session.get('currentID'), Session.get('days'));
            if(days){
@@ -144,9 +150,7 @@ Template.garden.rendered = function () {
             }
         }
    }
-});
-
-};
+}
 
 function loadData(name, attribute, days){
     var data;
