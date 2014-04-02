@@ -93,25 +93,19 @@ setActive : function() {
 Template.garden.rendered = function () {
 	loadd3();
 	loadc3();
-
-    Session.set("temperature", false);
-    Session.set("humidity", false);
-    Session.set("moisture", false);
-    Session.set("light", false);
-    Session.set('days', 1);
     
 
 
 
     Deps.autorun(function() {
       runChart();
-});
+  });
 
 };
 
 createChart = function(){
     chart = c3.generate({
-                    data: {
+        data: {
                           // x: 'x',
                           columns: [
                           // ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
@@ -124,48 +118,48 @@ createChart = function(){
                           ]
                       },
                       zoom: {
-                       enabled : true
-                   },
-                   axis : {
+                         enabled : true
+                     },
+                     axis : {
                         // x : {
                             // type : 'timeseries'
                         // }
                     },
                     tooltip: {
-                       show: false
-                   }
-                });
+                     show: false
+                 }
+             });
 };
 
 collectData = function(){
     temperature = loadData("Temperature", "temperature",days);
-               humidity = loadData("Humidity", "humidity",days);
+    humidity = loadData("Humidity", "humidity",days);
 
-               moisture = loadData("Moisture", "moisture",days);
-               light = loadData("Light", "light",days);
+    moisture = loadData("Moisture", "moisture",days);
+    light = loadData("Light", "light",days);
 };
 
 function runChart() {
-      if(typeof Session.get('currentID') !== "undefined"){
-            console.log(Session.get('currentID'));
-           days = get_history_days(Session.get('currentID'), Session.get('days'));
-           if(days){
-               collectData();
-               if(typeof chart==='undefined'){
-                createChart();
-            }else{
-               redraw();
-            }
-        }
-   }
+  if(typeof Session.get('currentID') !== "undefined"){
+    console.log(Session.get('currentID'));
+    days = get_history_days(Session.get('currentID'), Session.get('days'));
+    if(days){
+     collectData();
+     if(typeof chart==='undefined'){
+        createChart();
+    }else{
+     redraw();
+ }
+}
+}
 }
 
 function loadData(name, attribute, days){
     var data;
     if(!Session.get(attribute)){
-     data = [];
+       data = [];
 
- }else{
+   }else{
     data = get_history_attribute(Session.get('currentID'),days, attribute);
 }
 data.unshift(name);
