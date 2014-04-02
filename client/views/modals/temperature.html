@@ -14,7 +14,7 @@
 						<button class="btn section-header" data-toggle="collapse" id="autoButton" data-parent="#automatic" href="#collapseOne"><h4>Automatic</h4></button>
 						<div id="collapseOne" class="panel-collapse collapse {{isAuto}}">
 							<div class="collapse-content">
-								Keep the garden at this constant temperature (&deg; C) 
+								Keep the garden at this constant temperature (26&deg;C recommended) 
 							</div>
 							<input type="text" name="temp" class="form-control" id="temp">
 						</div>
@@ -24,10 +24,10 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#collapseTwo"><h4>Rules</h4></button>
 						<div id="collapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If temperature is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="tempMin" name="multiple[]" class="inline-form">&deg;C, turn heater <select><option value="on">On</option><option value="off">Off</option></select>
+								If temperature is Less than <input type="text" id="tempMin" name="multiple[]" class="inline-form">&deg;C, turn heater On
 							</div>
 							<div class="collapse-content">
-								If temperature is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="tempMax" name="multiple[]" class="inline-form">&deg;C, turn heater <select><option value="on">On</option><option value="off">Off</option></select>
+								If temperature is Greater than<input type="text" id="tempMax" name="multiple[]" class="inline-form">&deg;C, turn heater
 							</div>
 						</div>
 					</div>

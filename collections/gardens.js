@@ -200,7 +200,8 @@ Meteor.methods({
 	removeGarden: function(gardenId){
 		var user = Meteor.user();
 
-		var amount = Gardens.find({"user_id": user._id}).count;
+		var amount = Gardens.find({"user_id": user._id}).count();
+		console.log(amount);
 		if(amount > 1){
 			Gardens.remove(gardenId);
 		}

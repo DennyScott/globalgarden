@@ -11,7 +11,7 @@
 						<button class="btn section-header" data-toggle="collapse" id="autoButton" data-parent="#humidityautomatic" href="#humiditycollapseOne"><h4>Automatic</h4></button>
 						<div id="humiditycollapseOne" class="panel-collapse collapse {{isAuto}}">
 							<div class="collapse-content">
-							Keep the garden at this constant humidity (&deg; C) 
+							Keep the garden at this constant humidity (30-40% recommended) 
 						</div>
 						<input type="text" name="humidity" class="form-control" id="humCheck">
 						</div>
@@ -21,10 +21,10 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#humidityCollapseTwo"><h4>Rules</h4></button>
 						<div id="humidityCollapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="humMin" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
+								If humidity is Less than<input type="text" id="humMin" name="multiple[]" class="inline-form">%, turn humidifier On
 							</div>
 							<div class="collapse-content">
-								If humidity is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="humMax" name="multiple[]" class="inline-form">&deg;C, turn humidifier <select><option value="on">On</option><option value="off">Off</option></select>
+								If humidity is Greater than <input type="text" id="humMax" name="multiple[]" class="inline-form">%, turn humidifier Off
 							</div>
 						</div>
 					</div>

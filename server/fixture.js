@@ -1,8 +1,8 @@
 //TIME VARIABLES
 var runId;
 var timeScale = 1;
-var baseIterationTime = 30000;
-var iterationTime = 30000;
+var baseIterationTime = 15000;
+var iterationTime = 15000;
 var minimumIntervalTime = 3000;
 
 //TEMPERATURE VARIABLES
@@ -25,12 +25,12 @@ var moistMin = 0;
 var moistVariance = 0.2;
 
 //SPINKLER VARIABLES
-var sprinklerIterations = 4;
+var sprinklerIterations = 3;
 var sprinklerTempIncrease = 1;
 var sprinklerHumIncrease = 1;
-var sprinklerMoistureLightIncrease = 20;
-var sprinklerMoistureMediumIncrease = 40;
-var sprinklerMoistureHeavyIncrease = 60;
+var sprinklerMoistureLightIncrease = 30;
+var sprinklerMoistureMediumIncrease = 50;
+var sprinklerMoistureHeavyIncrease = 70;
 
 //HUMIDITY VARIABLES
 var humInc = 0;
@@ -322,6 +322,9 @@ function updateRun(){
 			if(garden.sprinklerOn){
 					moistureAdjust = moistureAdjust + garden.sprinkler.moistModifier;
 			}
+			if (moisture + moistureAdjust >= 92){
+				moistureAdjust = 0;
+			}
 
 			moisture += moistureAdjust * timeScale;
 
@@ -352,6 +355,9 @@ function updateRun(){
 			}
 			if(garden.sprinklerOn){
 					humidityAdjust = humidityAdjust + garden.sprinkler.humModifier;
+			}
+			if (humidity + humidityAdjust >= 92){
+				humidityAdjust = 0;
 			}
 			humidity += humidityAdjust * timeScale;
 

@@ -11,7 +11,7 @@
 						<button class="btn section-header" data-toggle="collapse" id="autoButton" data-parent="#moistureautomatic" href="#moisturecollapseOne"><h4>Automatic</h4></button>
 						<div id="moisturecollapseOne" class="panel-collapse collapse {{isAuto}}">
 							<div class="collapse-content">
-							Keep the garden at this constant moisture (&deg; C) 
+							Keep the garden at this constant moisture (40-60% recommended%)
 						</div>
 						<input type="text" name="moisture" class="form-control" id="moistCheck">
 						</div>
@@ -21,10 +21,10 @@
 						<button class="btn section-header" data-toggle="collapse" id="ruleButton" data-parent="#rules" href="#moistureCollapseTwo"><h4>Rules</h4></button>
 						<div id="moistureCollapseTwo" class="panel-collapse collapse {{isRules}}">
 							<div class="collapse-content">
-								If moisture is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="moistMin" name="multiple[]" class="inline-form">&deg;C, turn sprinkler <select><option value="on">On</option><option value="off">Off</option></select>
+								If moisture is Less than <input type="text" id="moistMin" name="multiple[]" class="inline-form">%, turn sprinkler On
 							</div>
 							<div class="collapse-content">
-								If moisture is <select><option value="less">Less than</option><option value="greater">Greater than</option></select> <input type="text" id="moistMax" name="multiple[]" class="inline-form">&deg;C, turn sprinkler <select><option value="on">On</option><option value="off">Off</option></select>
+								If moisture is Greater than <input type="text" id="moistMax" name="multiple[]" class="inline-form">%, turn sprinkler Off
 							</div>
 						</div>
 					</div>
